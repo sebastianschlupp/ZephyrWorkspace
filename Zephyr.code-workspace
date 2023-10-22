@@ -152,5 +152,27 @@
 		},
 		"editor.renderControlCharacters": false,
 		"cortex-debug.variableUseNaturalFormat": false
+	},
+	"extensions": {   
+		"recommendations": [ 
+			"ms-vscode.cpptools",
+			"trond-snekvik.devicetree",
+			"trond-snekvik.kconfig-lang",
+			"ms-vscode.makefile-tools",
+			"lextudio.restructuredtext",
+			"trond-snekvik.simple-rst",
+			
+			"marus25.cortex-debug",
+			"mcu-debug.debug-tracker-vscode",
+			"ms-vscode.vscode-embedded-tools",
+			"ms-vscode.vscode-serial-monitor",
+			"mcu-debug.rtos-views",
+
+			"mhutchie.git-graph",
+			"GitHub.github-vscode-theme",
+			"fabiospampinato.vscode-open-in-github",
+
+			"cschlosser.doxdocgen"
+		]
 	}
 }
