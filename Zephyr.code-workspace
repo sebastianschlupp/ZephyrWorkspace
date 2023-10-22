@@ -151,7 +151,9 @@
 			"**/.west/**": true
 		},
 		"editor.renderControlCharacters": false,
-		"cortex-debug.variableUseNaturalFormat": false
+		"cortex-debug.variableUseNaturalFormat": false,
+		"github.gitProtocol": "ssh",
+		"github.gitAuthentication": true
 	},
 	"extensions": {   
 		"recommendations": [ 
@@ -159,6 +161,7 @@
 			"trond-snekvik.devicetree",
 			"trond-snekvik.kconfig-lang",
 			"ms-vscode.makefile-tools",
+			"ms-python.python",
 			"lextudio.restructuredtext",
 			"trond-snekvik.simple-rst",
 			
@@ -171,6 +174,7 @@
 			"mhutchie.git-graph",
 			"GitHub.github-vscode-theme",
 			"fabiospampinato.vscode-open-in-github",
+			"dodonew.zephyr-color-log",
 
 			"cschlosser.doxdocgen"
 		]
