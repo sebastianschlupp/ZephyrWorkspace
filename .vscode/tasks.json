@@ -1,0 +1,184 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "West Build App",
+			"type": "process",
+			"group": "build",
+			"command": "${config:west}",
+			"args": [
+				"build",
+				"-p",
+				"auto",
+				"-d",
+				"${config:app.build_dir}",
+				"-b",
+				"${config:bsp.board}${config:bsp.cpu}",
+				"${config:app.name}",
+				"${config:app.zephyr_config}",
+				"${config:app.zephyr_dtc_overlay}",
+				"${config:app_boot.compile_args}"
+			],
+			"dependsOn": [
+				// "Clean Build",
+			 ],
+			"problemMatcher": [ "$gcc" ]
+		},
+		{
+			"label": "West Build Bootloader",
+			"type": "process",
+			"group": "build",
+			"command": "${config:west}",
+			"args": [
+				"build",
+				"-p",
+				"auto",
+				"-d",
+				"${config:app_boot.build_dir}",
+				"-b",
+				"${config:bsp.board}${config:bsp.cpu}",
+				"${config:app_boot.name}",
+				"${config:app_boot.zephyr_config}",
+				"${config:app_boot.zephyr_dtc_overlay}",
+				"${config:app_boot.compile_args}"
+			],
+			"dependsOn": [
+				// "Clean Build",
+			 ],
+			"problemMatcher": [ "$gcc" ]
+		},
+		{
+			"label": "West Twister Test",
+			"type": "process",
+			"group": "build",
+			"command": "${config:west}",
+			"args": [
+				"twister",
+				"-p",
+				"${config:twister.host_test_arch}",
+				"-T",
+				"${workspaceFolder:AppUnderDev}"
+			],
+			"dependsOn": [
+				// "West Build Bootloader",
+				// "West Build App",
+			 ],
+			"problemMatcher": []
+		},
+		{
+			"label": "West Twister Device Test",
+			"type": "process",
+			"group": "build",
+			"command": "${config:west}",
+			"args": [
+				"twister",
+				"--device-testing",
+				"--device-serial",
+				"/dev/ttyACM0",
+				"--device-serial-baud",
+				"115200",
+				"-p",
+				"${config:bsp.board}${config:bsp.cpu}",
+				"-T",
+				"${workspaceFolder:AppUnderDev}"
+			],
+			"dependsOn": [
+				// "West Build Bootloader",
+				// "West Build App",
+			 ],
+			"problemMatcher": []
+		},
+		{
+			"label": "Twister Clean Output",
+			"type": "shell",
+			"group": "build",
+			"command": "rm",
+			"args": ["-rf", "*twister-out*"],
+			"dependsOn": [],
+			"problemMatcher": []
+		},
+		{
+			"label": "Set West Source",
+			"type": "process",
+			"group": "build",
+			"command": "${config:west}",
+			"args": [
+				"config",
+				"zephyr.base",
+				"${workspaceFolder:zephyrproject}/zephyr"
+			],
+			"dependsOn": [],
+			"problemMatcher": []
+		},
+		{
+			"label": "Set West Source Prefer",
+			"type": "process",
+			"group": "build",
+			"command": "${config:west}",
+			"args": [
+				"config",
+				"zephyr.base-prefer",
+				"configfile"
+			],
+			"dependsOn": [],
+			"problemMatcher": []
+		},
+		{
+			"label": "Clean Build App",
+			"type": "shell",
+			"group": "build",
+			"command": "rm",
+			"args": [
+				"-rf",
+				"${config:app.build_dir}"
+			],
+			"dependsOn": [],
+			"problemMatcher": []
+		},
+		{
+			"label": "Clean Build Bootloader",
+			"type": "shell",
+			"group": "build",
+			"command": "rm",
+			"args": [
+				"-rf",
+				"${config:app_boot.build_dir}"
+			],
+			"dependsOn": [],
+			"problemMatcher": []
+		},
+		{
+			"label": "Style Check (commited only)",
+			"type": "shell",
+			"group": "test",
+			"command": "",
+			"args": [],
+			"dependsOn": [
+				"GitLint (commited only)",
+				"Checkpatch (commited only)"
+			],
+			"problemMatcher": []
+		},
+		{
+			"label": "GitLint (commited only)",
+			"type": "shell",
+			"group": "test",
+			"command": "gitlint",
+			"args": [],
+			"dependsOn": [],
+			"problemMatcher": []
+		},
+		{
+			"label": "Checkpatch (commited only)",
+			"type": "shell",
+			"group": "test",
+			"command": "${workspaceFolder:zephyrproject}/zephyr/scripts/checkpatch.pl",
+			"args": [
+				"-g",
+				"HEAD-5"
+			],
+			"dependsOn": [],
+			"problemMatcher": []
+		}
+	]
+}
