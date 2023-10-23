@@ -15,8 +15,8 @@
 		"targetId": "${config:bsp.board}",
 		"boardId": "1",
 		"toolchainPrefix": "arm-zephyr-eabi",
-		"armToolchainPath": "${env:GNUARMEMB_TOOLCHAIN_PATH}",
-		"svdFile": "${config:bsp.svd}",
+		"armToolchainPath": "${env:ZEPHYR_TOOLCHAIN_PATH}",
+		//"svdFile": "${config:bsp.svd}",
 		"showDevDebugOutput": "raw",
 		"configFiles": [
 				"${config:bsp.debug_config}"
@@ -34,8 +34,8 @@
 		"targetId": "${config:bsp.board}",
 		"boardId": "1",
 		"toolchainPrefix": "arm-zephyr-eabi",
-		"armToolchainPath": "${env:GNUARMEMB_TOOLCHAIN_PATH}",
-		"svdFile": "${config:bsp.svd}",
+		"armToolchainPath": "${env:ZEPHYR_TOOLCHAIN_PATH}",
+		//"svdFile": "${config:bsp.svd}",
 		"showDevDebugOutput": "raw",
 		"configFiles": [
 				"${config:bsp.debug_config}"
