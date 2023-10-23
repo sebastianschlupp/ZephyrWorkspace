@@ -6,9 +6,10 @@
 		{
 			"name": "Workspace",
 			"path": "."
-		},{
+		},
+		{
 			"name": "AppUnderDev",
-			"path": "../App"
+			"path": "../app"
 		},
 		{
 			"name": "zephyrproject",
@@ -152,7 +153,8 @@
 		"editor.renderControlCharacters": false,
 		"cortex-debug.variableUseNaturalFormat": false,
 		"github.gitProtocol": "ssh",
-		"github.gitAuthentication": true
+		"github.gitAuthentication": true,
+		"esbonio.sphinx.confDir": ""
 	},
 	"extensions": {   
 		"recommendations": [ 
