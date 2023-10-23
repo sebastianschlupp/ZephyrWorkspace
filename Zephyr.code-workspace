@@ -73,6 +73,7 @@
 		"cmake.configureOnOpen": false,
 
 		"files.associations": {
+			"kernel.h": "c"
 		},
 
 		// The number of spaces a tab is equal to. This setting is overridden
