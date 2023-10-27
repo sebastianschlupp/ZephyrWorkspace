@@ -20,7 +20,7 @@
 				"${config:app_boot.compile_args}"
 			],
 			"dependsOn": [
-				// "Clean Build",
+				"Clean Build",
 			 ],
 			"problemMatcher": [ "$gcc" ]
 		},

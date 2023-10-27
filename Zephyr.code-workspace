@@ -1,8 +1,5 @@
 {
 	"folders": [
-		/*{
-			"path": "."
-		},*/
 		{
 			"name": "Workspace",
 			"path": "."
@@ -22,15 +19,21 @@
 		{
 			"name": "BootloaderUnderDev",
 			"path": "../bootloader/mcuboot/boot/zephyr"
+		},
+		{
+			"name": "BoardsUnderDev",
+			"path": "../app/boards/"
 		}
 	],
 
 	"settings": {
-		//"kconfig.zephyr.west": "${env:HOME}/.python_default_venv/bin/west",
+		"kconfig.zephyr.west": "${env:HOME}/zephyrproject/.venv/bin/west",
 		"kconfig.zephyr.board": {
 			"board": "atsame51_cnano"
 		},
-		"west": "${env:HOME}/.python_default_venv/bin/west",
+		"git.autoRepositoryDetection": true,
+		"git.fetchOnPull": true,
+		"west": "${env:HOME}/zephyrproject/.venv/bin/west",
 		"twister":{
 			"host_test_arch": "qemu_x86",
 		},
